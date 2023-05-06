@@ -1,13 +1,16 @@
 Team members: Dylan Gatua
 Instructions on how to compile/ execute code:
   Install Mosquitto MQTT broker on the Raspberry Pi:
-  $   sudo apt-get update
-  $   sudo apt-get install mosquitto
+      
+      $   sudo apt-get update
+      $   sudo apt-get install mosquitto
 
   Install the Mosquitto Python client on the Raspberry Pi:
-  $   pip install paho-mqtt
+  
+      $   pip install paho-mqtt
 
   Pair the Garmin Forerunner 235 watch with the Raspberry Pi using the Bluetooth settings:
+          
           Turn on Bluetooth on the Raspberry Pi by running:  
           $   sudo systemctl enable bluetooth
           $   sudo systemctl start bluetooth
@@ -35,10 +38,12 @@ Instructions on how to compile/ execute code:
   Modify the Python script to include the correct MAC address of the watch and the IP address of the Raspberry Pi.
 
   Run the Python script on the Raspberry Pi using the following command:
-  $ python3 hr_pi.py
+  
+    $ python3 hr_pi.py
 
   Open a new terminal window and subscribe to the "heart_rate" topic to receive heart rate data:
-  $ mosquitto_sub -h <ip_address_of_Raspberry_Pi> -t heart_rate
+      
+      $ mosquitto_sub -h <ip_address_of_Raspberry_Pi> -t heart_rate
   *Replace <ip_address_of_Raspberry_Pi> with the IP Address of the Raspberry Pi
 
   The heart rate data should be displayed in the terminal window where the Mosquitto subscriber is running.
