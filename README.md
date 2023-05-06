@@ -52,3 +52,6 @@ Instructions on how to compile/ execute code:
   
 List of any external libraries that were used:
 numpy, bluepy, paho.mqtt, mosquitto, bluetooth, bluez
+
+Demo link:
+https://drive.google.com/file/d/1y4UcNkXAqldscNmw66ZJMHxWhldOVpzh/view?usp=sharing
