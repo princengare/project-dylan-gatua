@@ -55,3 +55,4 @@ numpy, bluepy, paho.mqtt, mosquitto, bluetooth, bluez
 
 Demo link:
 https://drive.google.com/file/d/1y4UcNkXAqldscNmw66ZJMHxWhldOVpzh/view?usp=sharing
+https://drive.google.com/file/d/1Dpc5QN6LUmaf3TUBqDORgYw_2aDhFuxu/view?usp=sharing
