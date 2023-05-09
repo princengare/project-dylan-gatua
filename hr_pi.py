@@ -1,9 +1,13 @@
 import numpy as np
-from bluepy.btle import Peripheral, UUID
+from bluepy.btle import Peripheral, UUID, DefaultDelegate, ADDR_TYPE_RANDOM
 import paho.mqtt.client as mqtt
 
 def on_message(client, userdata, message):
     print("Received message: " + str(message.payload.decode()))
+    
+class HRNotificationDelegate(DefaultDelegate):
+    def __init__(self):
+        DefaultDelegate.__init__(self)
 
 
 # UUIDs for the Garmin Forerunner 235 watch
@@ -12,14 +16,17 @@ HR_MEASUREMENT_CHAR_UUID = UUID("00002a37-0000-1000-8000-00805f9b34fb")
 
 # Set up MQTT client
 client = mqtt.Client()
-client.connect("10.25.255.255", 1883, 60)
+client.connect("172.20.10.3", 1883, 60)
 client.subscribe("heart_rate")
 client.loop_start()
+print("MQTT created")
+peripheral = Peripheral()
 
 try:
     # Connect to the watch and discover services and characteristics
-    peripheral = Peripheral()
-    peripheral.connect("65:21:d7:53:91:d1")
+    print("Preparing connection..")
+    peripheral = Peripheral("D1:91:53:D7:21:65", ADDR_TYPE_RANDOM)
+    print("connected")
     hr_service = peripheral.getServiceByUUID(HR_SERVICE_UUID)
     hr_measurement_char = hr_service.getCharacteristics(HR_MEASUREMENT_CHAR_UUID)[0]
 
